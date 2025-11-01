@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./src/main.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <title>Welcoming Task-Manager</title>
+    <script type="importmap">
+        {
+            "imports": {
+                "axios": "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",
+                "Toastify ":"https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            }
+        }
+    </script>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+
+            <a class="navbar-brand" href="#">Task-Manager</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" id="navToggleBtn"></span>
+            </button>
+            <div class="collapse navbar-collapse  d-flex justify-content-end" id="navbarMenu">
+                <div class="navbar-nav me-4">
+                    <a class="nav-link fw-medium" href="#">Features</a>
+                    <a class="nav-link fw-medium" href="#">Pricing</a>
+                    <a class="nav-link fw-medium" href="#">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section-first mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6 py-5 ">
+                        <h1 class="display-4 lead">
+                            <strong>Your Tasks with Ease</strong>
+                        </h1>
+                        <p class="text-muted lh-base me-2">Stay organized, boost productivity, and collaborate
+                            seamlessly
+                            with
+                            your
+                            team. TaskHub makes task
+                            management simple and
+                            intuitive.
+                        </p>
+                        <div>
+                            <button type="button" class="btn btn-primary my-3">Get Started Free</button>
+                            <button type="button" class="btn demo">Watch Demo</button>
+                        </div>
+                        <div class="text-body-tertiary">
+                            <small>Trusted by teams worldwide</small><br>
+                            <span class="circle-num">1</span>
+                            <span class="circle-num">2</span>
+                            <span class="circle-num">3</span>
+                            <span class="circle-num">4</span>
+                            <span>Join 10,000+ users</span>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 col-md-6 form-background ">
+                        <div class="toggle-tabs mb-3">
+                            <button class="btn btn-light auth active-tab" id="login">Login</button>
+                            <button class="btn btn-light auth" id="signup">Sign Up</button>
+                            <hr>
+                        </div>
+
+
+                        <form id="login-form" class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label for="email-login" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email-login" placeholder="user@gamil.com">
+                                <div class="invalid-feedback">
+                                    Invalid email format
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="login-password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="login-password"
+                                    placeholder="............">
+                                <div class="invalid-feedback">
+                                    password should be at least 4 characters
+                                </div>
+                            </div>
+                            <div class="pt-3 justify-content-center">
+                                <button type="button" id="submit-loginBtn"
+                                    class="col-12 btn btn-primary w-100">Login</button>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <span class="text-muted me-2">Don't have an account?</span>
+                                    <a href="#" style="text-align:center;"
+                                        class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                                        id="logToSignup" class="p-0">Sign Up</a>
+                                </div>
+                            </div>
+                        </form>
+
+                        <form id="signup-form" class="d-none">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Enter your name</label>
+                                <input type="text>" id="name" class="form-control" placeholder="User boy">
+                                <div class="invalid-feedback">
+                                    name should be at least 3 characters
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Enter your email</label>
+                                <input type="email" id="email" class="form-control" placeholder="user@gmail.com">
+                                <div class="invalid-feedback">
+                                    invalid email format
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Enter a strong password</label>
+                                <input type="password" id="password" class="form-control" placeholder="............">
+                                <div class="invalid-feedback">
+                                    password should be at least 4 characters
+                                </div>
+                            </div>
+
+                            <div class="d-flex pt-3 justify-content-center">
+                                <button type="submit" id="sign-upBtn" class="btn btn-primary w-100">Sign Up</button><br>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-two">
+            <div class="container">
+                <div class="row text-center">
+                    <h1 class="">Powerful Features</h1>
+                    <span class="text-muted me-2 mt-2">Everything you need to manage tasks effectively and boost team
+                        productivity
+                    </span>
+                </div>
+                <div class="row my-4 justify-content-center gap-5 p-0">
+                    <div class="col-12 col-md-5 p-3 bg-body-tertiary border rounded-4">
+                        <div>
+                            <h5>Smart Task Organization</h5>
+                            <span class="text-muted ">Organize tasks by priority, status, and due dates</span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5 p-3 bg-body-tertiary border rounded-4">
+                        <div>
+                            <h5>Real-time Collaboration</h5>
+                            <span class="text-muted me-2">Work together with your team in real-time</span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5 p-3  bg-body-tertiary border rounded-4">
+                        <div>
+                            <h5>Progress Tracking</h5>
+                            <span class="text-muted me-2">Visualize your productivity with detailed analytics</span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5 p-3  bg-body-tertiary border rounded-4">
+                        <div>
+                            <h5>Seamless Integration</h5>
+                            <span class="text-muted me-2">Connect with your favorite tools and services</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="section-three py-5">
+            <div class="container">
+                <div class="text-center rounded-5 lh-lg bg-body-secondary py-5">
+                    <h3 class="b">Ready to boost your productivity?</h3>
+                    <p>Join thousands of teams already using TaskHub to manage their work efficiently
+                        Start Free Trial
+                    </p>
+                    <button type="button" class="btn btn-primary rounded-pill px-4 py-2">Get Started Free</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer bg-gradient mt-4">
+        <div class="container pt-3">
+            <div class="row mt-5">
+                <div class="col-6 col-md-3 text-left">
+                    <div>
+                        <h5>Product</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-decoration-none text-dark">Features</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Pricing</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Security</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Updates</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 text-left">
+                    <div>
+                        <h5>Company</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-decoration-none text-dark">About
+                            <li><a href="#" class="text-decoration-none text-dark">Blog</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Careers</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 text-left">
+                    <div>
+                        <h5>Resources</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-decoration-none text-dark">Documentation</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Help Center</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Contact
+                                </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 text-left">
+                    <div>
+                        <h5>Legal</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-decoration-none text-dark">Privacy</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Terms</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Security</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div></div>
+        </div>
+    </footer>
+
+    <script type="module" src="./src/js/Auth.js"></script>
+    <script type="module" src="./src/js/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js
+"></script>
+</body>
+
+</html>

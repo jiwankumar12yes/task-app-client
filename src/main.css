@@ -1,0 +1,70 @@
+.btn-primary {
+  border-radius: 27px;
+}
+.demo {
+  background-color: rgb(229, 233, 237);
+  border-radius: 27px;
+}
+.circle-num {
+  margin-top: 7px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(51, 51, 228);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.75rem;
+  margin: px;
+  margin-left: -10px;
+}
+
+.form-background {
+  background-color: rgb(185, 183, 183);
+  border-radius: 40px;
+  padding: 16px;
+}
+
+.auth {
+  background: none !important;
+  border: none !important;
+}
+.auth:hover {
+  border-bottom: 1px solid black !important;
+}
+.active-tab {
+  border-bottom: 1px solid black !important;
+}
+
+.section-two {
+  margin-top: 90px;
+}
+.footer {
+  /* background-color: rgb(208, 214, 219); */
+  border-top: 1px solid rgb(220, 220, 213);
+}
+
+.sidebar {
+  transition: width 0.4s ease-in-out;
+  flex-shrink: 0;
+  height: 100vh;
+  overflow-x: hidden;
+}
+.sidebar-default {
+  width: 120px;
+  min-width: 120px;
+  /* border: 1px solid black; */
+  flex-shrink: 0;
+}
+.sidebar-expanded {
+  width: 250px;
+  min-width: 250px;
+  /* border: 1px solid black; */
+}
+.sidebar-button {
+  height: 50px;
+  width: 50px;
+  padding: 0px;
+}
