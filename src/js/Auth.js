@@ -135,7 +135,6 @@ async function sendSignup() {
   try {
     const response = await api.post("/register", { name, email, password });
     const result = response.data;
-    console.log(result);
     Toastify({
       text: result.message,
       duration: 1500,

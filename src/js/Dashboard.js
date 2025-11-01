@@ -49,7 +49,6 @@ const runTimer = setInterval(() => {
   if (userNameBanner.innerText === "Unknown") {
     location.replace("index.html");
     clearInterval(runTimer);
-    console.log("if part");
   } else {
     timer.innerText = `${min} m:${sec} s`;
     if (min === 0 && sec === 0) {
@@ -57,7 +56,6 @@ const runTimer = setInterval(() => {
       clearInterval(runTimer);
       localStorage.clear();
       location.replace("index.html");
-      console.log("else part");
     }
     if (sec === 0) {
       min--;
@@ -393,11 +391,10 @@ function renderTasks(tasks) {
 
 if (taskContainer) {
   taskContainer.addEventListener("click", (e) => {
-    debugger;
+    // debugger;
     const clickedActionBtn = e.target.closest("button");
     if (!clickedActionBtn) return;
     const taskId = Number(clickedActionBtn.id);
-    console.log(typeof taskId);
     if (!taskId) return;
 
     if (clickedActionBtn.classList.contains("delete")) {
@@ -415,7 +412,6 @@ async function deleteTask(taskId) {
   }
   try {
     const response = await api.delete(`/${taskId}`);
-    console.log(response);
     sendToastNotification(response, "green");
     getAllTasks();
   } catch (error) {
@@ -489,7 +485,6 @@ async function submitTask(e) {
       getAllTasks();
     }
   } catch (error) {
-    console.log(error);
     sendToastNotification(error.response, "red");
   }
 }
