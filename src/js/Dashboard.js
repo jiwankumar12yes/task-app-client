@@ -38,33 +38,42 @@ api.interceptors.request.use(
 document.addEventListener("DOMContentLoaded", async () => {
   getAllTasks();
   UserName();
-  runTimer;
+  startCountdown();
 });
 
-let min = 15,
-  sec = 0;
-const runTimer = setInterval(() => {
-  // const decodedPayload = decodeJwt(localStorage.getItem("accessToken"));
-  // console.log(decodedPayload);
-  if (userNameBanner.innerText === "Unknown") {
+let totalSeconds;
+let countdownInterval;
+function updateTimerDisplay(totalSeconds) {
+  const min = Math.floor(totalSeconds / 60);
+  const sec = totalSeconds % 60;
+  const secFormat = sec <= 10 ? `0${sec}` : sec;
+  timer.innerText = `${min} m:${sec} s`;
+}
+
+function startCountdown() {
+  const accessToken = localStorage.getItem("accessToken");
+  if (!accessToken) {
     location.replace("index.html");
-    clearInterval(runTimer);
-  } else {
-    timer.innerText = `${min} m:${sec} s`;
-    if (min === 0 && sec === 0) {
-      timer.innerText = "Timeout";
-      clearInterval(runTimer);
-      localStorage.clear();
-      location.replace("index.html");
-    }
-    if (sec === 0) {
-      min--;
-      sec = 60;
-    } else {
-      sec--;
-    }
+    return;
   }
-}, 1000);
+  const decodedPayload = decodeJwt(accessToken);
+  totalSeconds = decodedPayload.exp;
+  if (countdownInterval) {
+    clearInterval(countdownInterval);
+  }
+
+  countdownInterval = setInterval(() => {
+    const currentTiesSeconds = Math.floor(Date.now() / 1000);
+    let remainingSeconds = totalSeconds - currentTiesSeconds;
+
+    if (userNameBanner.innerText === "Unknown" || remainingSeconds <= 0) {
+      clearInterval(countdownInterval);
+      location.replace("index.html");
+    } else {
+      updateTimerDisplay(remainingSeconds);
+    }
+  }, 1000);
+}
 
 let allTasks = [];
 let filteredTask = [];
